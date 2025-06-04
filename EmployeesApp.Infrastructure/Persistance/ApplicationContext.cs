@@ -32,6 +32,26 @@ public class ApplicationContext(DbContextOptions<ApplicationContext> options)
             .HasDefaultValue(0m)
             .IsRequired();
 
+        modelBuilder.Entity<Company>().HasData(
+            new Company()
+            {
+                Id = 1,
+                CompanyName = "Microsoft",
+                City = "Redmond"
+            },
+            new Company()
+            {
+                Id = 2,
+                CompanyName = "Google",
+                City = "Mountain View"
+            },
+            new Company()
+            {
+                Id = 3,
+                CompanyName = "Apple",
+                City = "Cupertino"
+            });
+
 
         modelBuilder.Entity<Employee>().HasData(
             new Employee()
@@ -39,18 +59,22 @@ public class ApplicationContext(DbContextOptions<ApplicationContext> options)
                 Id = 562,
                 Name = "Anders Hejlsberg",
                 Email = "Anders.Hejlsberg@outlook.com",
+                CompanyId = 1,
+
             },
             new Employee()
             {
                 Id = 62,
                 Name = "Kathleen Dollard",
                 Email = "k.d@outlook.com",
+                CompanyId = 2,
             },
             new Employee()
             {
                 Id = 15662,
                 Name = "Mads Torgersen",
                 Email = "Admin.Torgersen@outlook.com",
+                CompanyId = 3,
             });
     }
 }

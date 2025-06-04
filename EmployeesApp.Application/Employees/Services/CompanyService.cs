@@ -13,6 +13,8 @@ public class CompanyService(IUnitOfWork unitOfWork) : ICompanyService
         {
             await unitOfWork.Employees.RemoveAsync(employee.Id);
         }
+        await unitOfWork.Companies.RemoveAsync(companyID);
+        await unitOfWork.PersistAllAsync();
 
     }
 }
